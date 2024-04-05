@@ -1,6 +1,5 @@
 <script>
   import svelteLogo from "./assets/svelte.svg";
-  import paintIcon from "./assets/paint.svg";
   import viteLogo from "/vite.svg";
   import Counter from "./lib/Counter.svelte";
   import Grid from "./lib/Grid.svelte";
@@ -9,7 +8,7 @@
 <main>
   <!--left hand tools panel-->
   <div class="tools">
-    
+    <button><i class="fa-solid fa-paintbrush"></i></button>
   </div>
   <div>
     <Grid />
@@ -19,8 +18,12 @@
 <style>
   main {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5rem;
   }
-  .tools {
-    background-color: burlywood;
+  .tools{
+    background-color: palevioletred;
+    padding: 1rem 4rem;
   }
 </style>
