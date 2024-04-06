@@ -1,9 +1,21 @@
 <script>
+  import { selectedColor } from "./store.js";
+
   let size = 8;
-  let range = [];
-  $: range = Array(size)
+  let range = Array(size)
     .fill()
     .map((_, i) => i);
+  let gridColors = Array(size)
+    .fill()
+    .map(() => Array(size).fill("#000")); //all cells with black color
+
+  $: range = Array(size)
+    .fill()
+    .map((_, i) => i); // Update range when size changes
+
+  function setColor(row, column) {
+    gridColors[row][column] = $selectedColor; //set the color of the clicked cell
+  }
 </script>
 
 <!--each block to create a square grid based on size property-->
@@ -12,9 +24,9 @@
   <input type="number" bind:value={size} min="1" max="10" />
 </div>
 <div class="grid" style="--size: {size};">
-  {#each range as row}
-    {#each range as column}
-      <div class="cell"></div>
+  {#each range as row, rowIndex}
+    {#each range as column, columnIndex}
+    <div class="cell" style="background-color: {gridColors[rowIndex][columnIndex]};" on:click={() => setColor(rowIndex, columnIndex)}></div>
     {/each}
   {/each}
 </div>

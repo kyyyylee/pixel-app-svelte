@@ -1,31 +1,38 @@
 <script>
-  const colors = [
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "blue",
-    "mediumorchid",
-    "hotpink",
-    "black",
-    "saddlebrown"
-  ];
-  let selected = colors[0];
-</script>
+    import { selectedColor } from './store.js';
+  
+    const colors = [
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "mediumorchid",
+      "hotpink",
+      "black",
+      "saddlebrown",
+    ];
+  
+    function selectColor(color) {
+      selectedColor.set(color);
+    }
+
+  </script>
 
 <div class="colorPallete">
-  <div class="colorGrid">
-    {#each colors as color}
-      <button
-        class="colorPill"
-        aria-current={selected === color}
-        aria-label={color}
-        style="background: {color}"
-        on:click={() => (selected = color)}
-      ></button>
-    {/each}
+    <div class="colorGrid">
+      {#each colors as color}
+        <button
+          class="colorPill"
+          aria-current={$selectedColor === color}
+          style="background-color: {color};"
+          on:click={() => selectColor(color)}
+        ></button>
+      {/each}
   </div>
-    <div class="currentColor" style="background: {selected}"><i class="fa-solid fa-paintbrush"></i></div>
+  <div class="currentColor" style="background: {$selectedColor}">
+    <i class="fa-solid fa-paintbrush"></i>
+  </div>
 </div>
 
 <style>
