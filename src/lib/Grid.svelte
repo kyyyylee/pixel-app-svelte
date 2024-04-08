@@ -81,4 +81,19 @@
     border: solid 1px #242424;
     background-color: white;
   }
+
+  @media (min-width: 800px) {
+    .grid {
+      width: 450px;
+      height: 450px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .grid {
+      width: 550px;
+      height: 560px;
+    }
+  }
+
 </style>

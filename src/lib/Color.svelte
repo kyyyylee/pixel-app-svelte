@@ -44,7 +44,7 @@
   </div>
 
   <div class="tools">
-      <button class="currentColor" on:click={paintMode} style="border: {erase ? 'none' : `2px solid ${$selectedColor}`};"><i class="fa-solid fa-paintbrush"></i></button>
+      <button class="currentColor" on:click={paintMode} style="border: {erase ? 'none' : `3px solid ${$selectedColor}`};"><i class="fa-solid fa-paintbrush"></i></button>
       <button on:click={() => selectColor()} on:click={eraseMode} style="border: {!erase ? 'none' : '2px solid green'};"><i class="fa-solid fa-eraser"></i></button>
   </div>
 </div>
@@ -84,7 +84,7 @@
     height: 3rem;
     border-radius: 50%;
     font-size: 1em;
-    background-color: #rgba(255, 255, 255, 0.87);
+    background-color: white;
     cursor: pointer;
     transition: border-color 0.25s;
     border: 1px solid transparent;
@@ -96,4 +96,31 @@
     align-items: center;
   }
 
+  @media (min-width: 800px) {
+    .colorPill {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .tools button{
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  .colorPallete{
+    margin: 1rem;
+  }
+  }
+
+  @media (min-width: 1200px) {
+    .colorPill {
+    width: 3rem;
+    height: 3rem;
+  }
+  .tools button{
+    width: 4rem;
+    height: 4rem;
+  }
+  .colorPallete{
+    margin: 2rem;
+  }
+  }
 </style>
