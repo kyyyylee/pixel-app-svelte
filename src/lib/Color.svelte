@@ -1,15 +1,30 @@
 <script>
-  import { selectedColor } from "./store.js";
+  import { selectedColor, fillGrid } from "./store.js";
 
   const colors = [
     "red",
+    "firebrick",
+    "maroon",
     "orange",
+    "coral",
+    "darkorange",
     "yellow",
+    "gold",
+    "goldenrod",
+    "yellowgreen",
     "green",
+    "darkgreen",
     "blue",
+    "cornflowerblue",
+    "royalblue",
     "mediumorchid",
+    "purple",
+    "indigo",
     "hotpink",
+    "deeppink",
+    "pink",
     "black",
+    "gray",
     "saddlebrown",
   ];
 
@@ -20,14 +35,36 @@
   }
 
   let erase = false;
+  let fill = false;
+  let paint = true
   
   function eraseMode() {
-    erase = !erase;
+    erase = true;
+    fill = false;
+    paint = false;
   }
+
   function paintMode() {
+    paint = true;
     erase = false;
+    fill = false;
     selectedColor.set(colors[0]);
   }
+
+  function fillMode() {
+    fill = true;
+    erase = false;
+    paint = false;
+    selectedColor.set(null);
+  }
+
+  function fillBoard() {
+    if (!fill) return;
+    if (fill) {
+    fillGrid.set(true);
+  }
+  }
+
 </script>
 
 <div class="colorPallete">
@@ -36,17 +73,22 @@
       <button
         class="colorPill"
         aria-current={$selectedColor === color}
-        style="background-color: {color}; border: {$selectedColor === color ? '2px solid white' : 'none'};"
+        style="background-color: {color}; border: {$selectedColor === color ? '2px dashed white' : 'none'}; "
         disabled={erase}
         on:click={() => selectColor(color)}
+        on:click={fillBoard}
       ></button>
     {/each}
   </div>
 
   <div class="tools">
-      <button class="currentColor" on:click={paintMode} style="border: {erase ? 'none' : `3px solid ${$selectedColor}`};"><i class="fa-solid fa-paintbrush"></i></button>
-      <button on:click={() => selectColor()} on:click={eraseMode} style="border: {!erase ? 'none' : '2px solid green'};"><i class="fa-solid fa-eraser"></i></button>
+      <button class="currentColor" on:click={paintMode} style="border: {paint ? `3px solid ${$selectedColor}` : 'none' };"><i class="fa-solid fa-paintbrush"></i></button>
+      <button on:click={fillMode} style="border: {fill ? '3px solid black' : 'none' };"><i class="fa-solid fa-fill-drip"></i></button>
+      <button on:click={() => selectColor()} on:click={eraseMode} style="border: {!erase ? 'none' : '3px solid black'};"><i class="fa-solid fa-eraser"></i></button>
   </div>
+  {#if fill}
+    <p>Select a color to fill the board</p>
+  {/if}
 </div>
 
 <style>
@@ -57,16 +99,25 @@
     gap: 1rem;
     margin-top: 1rem;
   }
+
+  .colorPallete p {
+    margin: 0;
+    padding: 0;
+    font-size: small;
+  }
+
   .colorGrid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
   }
+
   .colorPill {
     border: none;
     width: 2rem;
     height: 2rem;
     cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
   }
 
   .colorPill:disabled {
@@ -107,6 +158,11 @@
   }
   .colorPallete{
     margin: 1rem;
+  }
+  .colorGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
   }
 

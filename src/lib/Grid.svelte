@@ -1,5 +1,5 @@
 <script>
-  import { selectedColor } from "./store.js";
+  import { selectedColor, fillGrid } from "./store.js";
 
   let size = 5;
   let range = Array(size)
@@ -12,10 +12,10 @@
   $: {
     range = Array(size)
       .fill()
-      .map((_, i) => i); // Update range when size changes
+      .map((_, i) => i); //update range when size changes
     gridColors = Array(size)
       .fill()
-      .map(() => Array(size).fill("#ffffff")); // Update gridColors when size changes
+      .map(() => Array(size).fill("#ffffff")); //update gridColors when size changes
   }
 
   function setColor(row, column) {
@@ -26,6 +26,12 @@
     gridColors = Array(size)
       .fill()
       .map(() => Array(size).fill("#ffffff"));
+  }
+
+  $: if ($fillGrid) {
+    //fill the grid with the selected color
+    gridColors = Array(size).fill().map(() => Array(size).fill($selectedColor));
+    fillGrid.set(false); 
   }
 </script>
 

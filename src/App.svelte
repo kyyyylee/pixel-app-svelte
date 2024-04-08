@@ -23,7 +23,7 @@
     font-size: x-small;
     text-align: left;
     padding: 0 1.5rem;
-    border-bottom: solid 3px #F1F2F5;
+    border-bottom: solid 2px #F1F2F5;
   }
   main {
     display: flex;
