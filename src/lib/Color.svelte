@@ -13,6 +13,8 @@
     "saddlebrown",
   ];
 
+  selectedColor.set(colors[0]);
+
   function selectColor(color) {
     selectedColor.set(color);
   }
@@ -24,6 +26,7 @@
   }
   function paintMode() {
     erase = false;
+    selectedColor.set(colors[0]);
   }
 </script>
 
@@ -41,7 +44,7 @@
   </div>
 
   <div class="tools">
-      <button class="currentColor" on:click={paintMode} style="border: {erase ? 'none' : '2px solid green'};"><i class="fa-solid fa-paintbrush"></i></button>
+      <button class="currentColor" on:click={paintMode} style="border: {erase ? 'none' : `2px solid ${$selectedColor}`};"><i class="fa-solid fa-paintbrush"></i></button>
       <button on:click={() => selectColor()} on:click={eraseMode} style="border: {!erase ? 'none' : '2px solid green'};"><i class="fa-solid fa-eraser"></i></button>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <script>
   import { selectedColor } from "./store.js";
 
-  let size = 8;
+  let size = 5;
   let range = Array(size)
     .fill()
     .map((_, i) => i);
@@ -9,12 +9,23 @@
     .fill()
     .map(() => Array(size).fill("#ffffff")); //all cells with black color
 
-  $: range = Array(size)
-    .fill()
-    .map((_, i) => i); // Update range when size changes
+  $: {
+    range = Array(size)
+      .fill()
+      .map((_, i) => i); // Update range when size changes
+    gridColors = Array(size)
+      .fill()
+      .map(() => Array(size).fill("#ffffff")); // Update gridColors when size changes
+  }
 
   function setColor(row, column) {
     gridColors[row][column] = $selectedColor; //set the color of the clicked cell
+  }
+
+  function clearGrid() {
+    gridColors = Array(size)
+      .fill()
+      .map(() => Array(size).fill("#ffffff"));
   }
 </script>
 
@@ -22,11 +33,13 @@
 <div>
   <div class="gridInput">
     <label for="size">Grid size:</label>
-    <input type="number" bind:value={size} min="1" max="10" />
+    <input type="number" bind:value={size} min="1" max="15" />
   </div>
   <div class="grid" style="--size: {size};">
     {#each range as row, rowIndex}
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
       {#each range as column, columnIndex}
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
           class="cell"
           style="background-color: {gridColors[rowIndex][columnIndex]};"
@@ -35,6 +48,7 @@
       {/each}
     {/each}
   </div>
+  <button on:click={clearGrid}>Clear Grid</button>
 </div>
 
 <style>
@@ -58,5 +72,13 @@
   .cell {
     border: 1px solid #242424;
     padding: 10px;
+  }
+
+  button {
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: solid 1px #242424;
+    background-color: white;
   }
 </style>
