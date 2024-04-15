@@ -30,13 +30,33 @@
 
   $: if ($fillGrid) {
     //fill the grid with the selected color
-    gridColors = Array(size).fill().map(() => Array(size).fill($selectedColor));
-    fillGrid.set(false); 
+    gridColors = Array(size)
+      .fill()
+      .map(() => Array(size).fill($selectedColor));
+    fillGrid.set(false);
   }
+
+  let design = true;
+  let crochet = false;
+
+  function designMode() {
+    design = true;
+    crochet = false;
+  }
+
+  function crochetMode() {
+    crochet = true;
+    design = false;
+  }
+
 </script>
 
 <!--each block to create a square grid based on size property-->
 <div>
+  <div class="mode">
+    <button style="background-color: {design ? '#242424' : 'white' }; color: {design ? 'white' : 'black' };" on:click={designMode}>Design Mode</button>
+    <button style="background-color: {crochet ? '#242424' : 'white' }; color: {crochet ? 'white' : 'black' };" on:click={crochetMode}>Crochet Mode</button>
+  </div>
   <div class="gridInput">
     <label for="size">Grid size:</label>
     <input type="number" bind:value={size} min="1" max="15" />
@@ -58,6 +78,13 @@
 </div>
 
 <style>
+  .mode {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
   .gridInput {
     margin-bottom: 1rem;
   }
@@ -88,7 +115,7 @@
     background-color: white;
   }
 
-#clearBTN:hover {
+  button:hover {
     background-color: #242424;
     color: white;
     cursor: pointer;
@@ -107,5 +134,4 @@
       height: 560px;
     }
   }
-
 </style>
