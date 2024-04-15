@@ -1,5 +1,5 @@
 <script>
-  import { selectedColor, fillGrid, crochet } from "./store.js";
+  import { selectedColor, fillGrid, crochet, selectedRow } from "./store.js";
 
   let size = 5;
   let range = Array(size)
@@ -18,7 +18,13 @@
       .map(() => Array(size).fill("#ffffff")); //update gridColors when size changes
   }
 
+  let crochetMode = false;
+
+  $: crochetMode = $crochet;
   function setColor(row, column) {
+    if (crochetMode) {
+      return;
+    }
     gridColors[row][column] = $selectedColor; //set the color of the clicked cell
   }
 
@@ -43,18 +49,27 @@
     crochet.set(false);
   }
 
-  function crochetMode() {
+  function crochetGrid() {
     crochet.set(true);
     design = false;
   }
-
 </script>
 
 <!--each block to create a square grid based on size property-->
 <div>
   <div class="mode">
-    <button style="background-color: {design ? '#242424' : 'white' }; color: {design ? 'white' : 'black' };" on:click={designMode}>Design Mode</button>
-    <button style="background-color: {!design ? '#242424' : 'white' }; color: {!design ? 'white' : 'black' };" on:click={crochetMode}>Crochet Mode</button>
+    <button
+      style="background-color: {design ? '#242424' : 'white'}; color: {design
+        ? 'white'
+        : 'black'};"
+      on:click={designMode}>Design Mode</button
+    >
+    <button
+      style="background-color: {!design ? '#242424' : 'white'}; color: {!design
+        ? 'white'
+        : 'black'};"
+      on:click={crochetGrid}>Crochet Mode</button
+    >
   </div>
   <div class="gridInput">
     <label for="size">Grid size:</label>

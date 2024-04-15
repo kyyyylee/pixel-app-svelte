@@ -1,5 +1,5 @@
 <script>
-  import { selectedColor, fillGrid } from "./store.js";
+  import { selectedColor, fillGrid, crochet } from "./store.js";
 
   const colors = [
     "red",
@@ -69,6 +69,7 @@
     fillGrid.set(true);
   }
   }
+
 
 </script>
 
