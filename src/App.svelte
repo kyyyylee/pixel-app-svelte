@@ -33,9 +33,18 @@
   header {
     font-size: x-small;
     text-align: left;
-    padding: .5rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     border-bottom: solid 2px #f1f2f5;
   }
+
+  h1 {
+  font-size: 2em;
+  background: linear-gradient(to right, #7F9146, #558C72, #2C869B, #4D78AC, #9067B5, #CB58B7, #D86082, #E26459, #EE6C2B);
+  background-size: 30% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+}
 
   main {
     display: flex;
@@ -66,15 +75,15 @@
     letter-spacing: 2px;
     padding: 1rem;
     margin: 1rem;
-    background-color: pink;
+    background: linear-gradient(to right, #7F9146 , #558C72, #2C869B, #4D78AC, #9067B5, #CB58B7, #D86082, #E26459, #EE6C2B);
     border-radius: 10px;
     width: 100%;
+    color: white;
   }
-
 
   footer a {
     text-decoration: none;
-    color: deeppink;
+    color: black;
   }
 
   footer a i {
@@ -100,7 +109,7 @@
       width: 100%;
       place-items: center;
     }
-    footer{
+    footer {
       width: 80%;
     }
   }
