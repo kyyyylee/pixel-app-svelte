@@ -1,5 +1,5 @@
 <script>
-  import { selectedColor, fillGrid } from "./store.js";
+  import { selectedColor, fillGrid, crochet } from "./store.js";
 
   let size = 5;
   let range = Array(size)
@@ -37,15 +37,14 @@
   }
 
   let design = true;
-  let crochet = false;
 
   function designMode() {
     design = true;
-    crochet = false;
+    crochet.set(false);
   }
 
   function crochetMode() {
-    crochet = true;
+    crochet.set(true);
     design = false;
   }
 
@@ -55,7 +54,7 @@
 <div>
   <div class="mode">
     <button style="background-color: {design ? '#242424' : 'white' }; color: {design ? 'white' : 'black' };" on:click={designMode}>Design Mode</button>
-    <button style="background-color: {crochet ? '#242424' : 'white' }; color: {crochet ? 'white' : 'black' };" on:click={crochetMode}>Crochet Mode</button>
+    <button style="background-color: {!design ? '#242424' : 'white' }; color: {!design ? 'white' : 'black' };" on:click={crochetMode}>Crochet Mode</button>
   </div>
   <div class="gridInput">
     <label for="size">Grid size:</label>

@@ -1,12 +1,22 @@
 <script>
+  import { crochet } from "./lib/store.js";
   import Grid from "./lib/Grid.svelte";
   import Color from "./lib/Color.svelte";
+
+  let crochetMode = false;
+
+  $: crochetMode = $crochet;
+
+  if (crochetMode) {
+    console.log("crochet mode");
+  }
+
 </script>
 
 <header>
   <h1>Stitched Pixels</h1>
 </header>
-<main>
+<main style="opacity: {crochetMode ? '25%' : '100%' };">
   <!--tools panel-->
   <div class="panel">
     <Color />
