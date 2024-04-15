@@ -54,7 +54,7 @@
       {/each}
     {/each}
   </div>
-  <button on:click={clearGrid}>Clear Grid</button>
+  <button id="clearBTN" on:click={clearGrid}>Clear Grid</button>
 </div>
 
 <style>
@@ -86,6 +86,12 @@
     border-radius: 5px;
     border: solid 1px #242424;
     background-color: white;
+  }
+
+#clearBTN:hover {
+    background-color: #242424;
+    color: white;
+    cursor: pointer;
   }
 
   @media (min-width: 800px) {

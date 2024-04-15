@@ -28,6 +28,8 @@
     "saddlebrown",
   ];
 
+  let message = "Select a color and click on a square to paint it";
+
   selectedColor.set(colors[0]);
 
   function selectColor(color) {
@@ -42,6 +44,7 @@
     erase = true;
     fill = false;
     paint = false;
+    message = "Click on a square to remove the color";
   }
 
   function paintMode() {
@@ -49,6 +52,7 @@
     erase = false;
     fill = false;
     selectedColor.set(colors[0]);
+    message = "Select a color and click on a square to paint it";
   }
 
   function fillMode() {
@@ -56,6 +60,7 @@
     erase = false;
     paint = false;
     selectedColor.set(null);
+    message = "Select a color to fill in the entire grid";
   }
 
   function fillBoard() {
@@ -86,9 +91,9 @@
       <button on:click={fillMode} style="border: {fill ? '3px solid black' : 'none' };"><i class="fa-solid fa-fill-drip"></i></button>
       <button on:click={() => selectColor()} on:click={eraseMode} style="border: {!erase ? 'none' : '3px solid black'};"><i class="fa-solid fa-eraser"></i></button>
   </div>
-  {#if fill}
-    <p>Select a color to fill the board</p>
-  {/if}
+
+    <p>{message}</p>
+ 
 </div>
 
 <style>
