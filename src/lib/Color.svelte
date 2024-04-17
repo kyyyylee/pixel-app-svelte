@@ -172,18 +172,4 @@
     gap: 1rem;
   }
   }
-
-  @media (min-width: 1200px) {
-    .colorPill {
-    width: 3rem;
-    height: 3rem;
-  }
-  .tools button{
-    width: 4rem;
-    height: 4rem;
-  }
-  .colorPallete{
-    margin: 2rem;
-  }
-  }
 </style>

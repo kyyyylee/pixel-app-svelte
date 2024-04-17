@@ -16,14 +16,14 @@
 <header>
   <h1>Stitched Pixels</h1>
 </header>
-<main style="opacity: {crochetMode ? '25%' : '100%' };">
+<main>
   <!--tools panel-->
-  <div class="panel">
+  <div style="opacity: {crochetMode ? '25%' : '100%' };" class="panel">
     <Color />
   </div>
 
   <!--grid-->
-  <div class="grid">
+  <div class="grid" >
     <Grid />
   </div>
 </main>
@@ -108,7 +108,6 @@
   @media (min-width: 800px) {
     main {
       flex-direction: row;
-     
     }
     .panel {
       height: 100vh;

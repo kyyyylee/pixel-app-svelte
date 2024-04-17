@@ -21,6 +21,7 @@
   let crochetMode = false;
 
   $: crochetMode = $crochet;
+
   function setColor(row, column) {
     if (crochetMode) {
       return;
@@ -82,13 +83,32 @@
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
           class="cell"
-          style="background-color: {gridColors[rowIndex][columnIndex]};"
-          on:click={() => setColor(rowIndex, columnIndex)}
+          style="background-color: {gridColors[rowIndex][
+            columnIndex
+          ]}; opacity: {$crochet && rowIndex !== $selectedRow ? 0.25 : 1};"
+          on:click={() => {
+            setColor(rowIndex, columnIndex);
+            selectedRow.set(rowIndex);
+          }}
         ></div>
       {/each}
     {/each}
   </div>
+  {#if crochetMode}
+    <button
+      on:click={() => {
+        if ($selectedRow > 0) selectedRow.update((n) => n - 1);
+      }}><i class="fa-solid fa-arrow-up"></i></button
+    >
+  {/if}
   <button id="clearBTN" on:click={clearGrid}>Clear Grid</button>
+  {#if crochetMode}
+    <button
+      on:click={() => {
+        if ($selectedRow < size - 1) selectedRow.update((n) => n + 1);
+      }}><i class="fa-solid fa-arrow-down"></i></button
+    >
+  {/if}
 </div>
 
 <style>
@@ -96,7 +116,12 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 1rem;
+  }
+
+  .instructions {
+    text-align: center;
+    font-size: small;
+    margin: 0 0 1rem 0;
   }
 
   .gridInput {
@@ -144,8 +169,8 @@
 
   @media (min-width: 1200px) {
     .grid {
-      width: 550px;
-      height: 560px;
+      width: 500px;
+      height: 500px;
     }
   }
 </style>
