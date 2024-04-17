@@ -50,7 +50,7 @@
   h1 {
   font-size: 2em;
   background: linear-gradient(to right, #7F9146, #558C72, #2C869B, #4D78AC, #9067B5, #CB58B7, #D86082, #E26459, #EE6C2B);
-  background-size: 30% 100%;
+  background-size: 20% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 2px;
@@ -108,7 +108,7 @@
   @media (min-width: 800px) {
     main {
       flex-direction: row;
-      gap: 4rem;
+     
     }
     .panel {
       height: 100vh;
@@ -117,10 +117,18 @@
     }
     .grid {
       width: 100%;
-      place-items: center;
+      margin-top: 1rem;
     }
     footer {
       width: 80%;
     }
+    h1{
+      background-size: 10% 100%;
+    }
   }
+  @media (min-width: 1200px) {
+    h1{
+      background-size: 8% 100%;
+    }
+  } 
 </style>

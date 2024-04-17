@@ -64,6 +64,7 @@
   }
 
   function fillBoard() {
+    if (crochet) return;
     if (!fill) return;
     if (fill) {
     fillGrid.set(true);
