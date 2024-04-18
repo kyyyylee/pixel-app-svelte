@@ -28,7 +28,7 @@
     "saddlebrown",
   ];
 
-  let message = "Select a color and click on a square to paint it";
+  let message = "Select a tool to begin painting!";
 
   selectedColor.set(colors[0]);
 
@@ -64,11 +64,18 @@
   }
 
   function fillBoard() {
-    if (crochet) return;
     if (!fill) return;
     if (fill) {
     fillGrid.set(true);
   }
+  }
+
+  $: if($crochet){
+    paint = false;
+    erase = false;
+    fill = false;
+    //make selected color null
+    selectedColor.set(null);
   }
 
 
@@ -89,9 +96,9 @@
   </div>
 
   <div class="tools">
-      <button class="currentColor" on:click={paintMode} style="border: {paint ? `3px solid ${$selectedColor}` : 'none' };"><i class="fa-solid fa-paintbrush"></i></button>
-      <button on:click={fillMode} style="border: {fill ? '3px solid black' : 'none' };"><i class="fa-solid fa-fill-drip"></i></button>
-      <button on:click={() => selectColor()} on:click={eraseMode} style="border: {!erase ? 'none' : '3px solid black'};"><i class="fa-solid fa-eraser"></i></button>
+      <button disabled={$crochet} class="currentColor" on:click={paintMode} style="border: {paint ? `3px solid ${$selectedColor}` : 'none' };"><i class="fa-solid fa-paintbrush"></i></button>
+      <button disabled={$crochet} on:click={fillMode} style="border: {fill ? '3px solid black' : 'none' };"><i class="fa-solid fa-fill-drip"></i></button>
+      <button disabled={$crochet} on:click={() => selectColor()} on:click={eraseMode} style="border: {!erase ? 'none' : '3px solid black'};"><i class="fa-solid fa-eraser"></i></button>
   </div>
 
     <p>{message}</p>

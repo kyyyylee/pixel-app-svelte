@@ -23,7 +23,7 @@
   </div>
 
   <!--grid-->
-  <div class="grid" >
+  <div class="grid">
     <Grid />
   </div>
 </main>

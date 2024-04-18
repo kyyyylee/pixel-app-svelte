@@ -118,12 +118,6 @@
     gap: 1rem;
   }
 
-  .instructions {
-    text-align: center;
-    font-size: small;
-    margin: 0 0 1rem 0;
-  }
-
   .gridInput {
     margin-bottom: 1rem;
   }
