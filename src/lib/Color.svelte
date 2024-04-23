@@ -150,6 +150,7 @@
     border-radius: 50%;
     font-size: 1em;
     background-color: white;
+    color: black;
     cursor: pointer;
     transition: border-color 0.25s;
     border: 1px solid transparent;
