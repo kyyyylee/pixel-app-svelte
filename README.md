@@ -1,6 +1,6 @@
 ## Svelte + Vite Pixel App
 
-[![pixel app](image-url)](/src/assets/screenshot.png)
+![pixel app ss](/src/assets/screenshot.png)
 
 This app allows you to color in squares of a grid and create your own design
 
