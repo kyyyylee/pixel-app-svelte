@@ -1,5 +1,6 @@
 <script>
   import { selectedColor, fillGrid, crochet, selectedRow } from "./store.js";
+  import Counter from "./Counter.svelte";
 
   let size = 5;
   let range = Array(size)
@@ -154,7 +155,7 @@
     cursor: pointer;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 1000px) {
     .grid {
       width: 450px;
       height: 450px;

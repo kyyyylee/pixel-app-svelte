@@ -162,7 +162,7 @@
     align-items: center;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 1000px) {
     .colorPill {
     width: 2.5rem;
     height: 2.5rem;

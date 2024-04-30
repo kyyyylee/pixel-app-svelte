@@ -2,6 +2,7 @@
   import { crochet } from "./lib/store.js";
   import Grid from "./lib/Grid.svelte";
   import Color from "./lib/Color.svelte";
+  import Counter from "./lib/Counter.svelte";
 
   let crochetMode = false;
 
@@ -10,7 +11,6 @@
   if (crochetMode) {
     console.log("crochet mode");
   }
-
 </script>
 
 <header>
@@ -18,13 +18,18 @@
 </header>
 <main>
   <!--tools panel-->
-  <div style="opacity: {crochetMode ? '25%' : '100%' };" class="panel">
+  <div style="opacity: {crochetMode ? '25%' : '100%'};" class="panel">
     <Color />
   </div>
 
   <!--grid-->
   <div class="grid">
     <Grid />
+  </div>
+
+  <!--counter-->
+  <div class="counter">
+    <Counter />
   </div>
 </main>
 
@@ -48,17 +53,29 @@
   }
 
   h1 {
-  font-size: 2em;
-  background: linear-gradient(to right, #7F9146, #558C72, #2C869B, #4D78AC, #9067B5, #CB58B7, #D86082, #E26459, #EE6C2B);
-  background-size: 20% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 2px;
-}
+    font-size: 2em;
+    background: linear-gradient(
+      to right,
+      #7f9146,
+      #558c72,
+      #2c869b,
+      #4d78ac,
+      #9067b5,
+      #cb58b7,
+      #d86082,
+      #e26459,
+      #ee6c2b
+    );
+    background-size: 20% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+  }
 
   main {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 2rem;
   }
 
@@ -85,7 +102,18 @@
     letter-spacing: 2px;
     padding: 1rem;
     margin: 1rem;
-    background: linear-gradient(to right, #7F9146 , #558C72, #2C869B, #4D78AC, #9067B5, #CB58B7, #D86082, #E26459, #EE6C2B);
+    background: linear-gradient(
+      to right,
+      #7f9146,
+      #558c72,
+      #2c869b,
+      #4d78ac,
+      #9067b5,
+      #cb58b7,
+      #d86082,
+      #e26459,
+      #ee6c2b
+    );
     border-radius: 10px;
     width: 100%;
     color: white;
@@ -105,7 +133,7 @@
     color: #f1f2f5;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 1000px) {
     main {
       flex-direction: row;
     }
@@ -115,19 +143,24 @@
       place-items: center;
     }
     .grid {
-      width: 100%;
       margin-top: 1rem;
+    }
+    .counter {
+      background-color: #f1f2f5;
+      padding: 1rem 4rem;
+      border-radius: 10px;
+      margin: 0.5rem 1rem;
     }
     footer {
       width: 80%;
     }
-    h1{
+    h1 {
       background-size: 10% 100%;
     }
   }
   @media (min-width: 1200px) {
-    h1{
+    h1 {
       background-size: 8% 100%;
     }
-  } 
+  }
 </style>
