@@ -101,7 +101,7 @@
       <button disabled={$crochet} on:click={() => selectColor()} on:click={eraseMode} style="border: {!erase ? 'none' : '3px solid black'};"><i class="fa-solid fa-eraser"></i></button>
   </div>
 
-    <p>{message}</p>
+  
  
 </div>
 
