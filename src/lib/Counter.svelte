@@ -13,7 +13,7 @@
 </script>
 
 <div>
-  <h3>Stitch Counter</h3>
+  <h4>Stitch Counter</h4>
   <div class="buttons">
     <button on:click={decrease}> - </button>
     <button class="count">
@@ -25,11 +25,16 @@
 </div>
 
 <style>
+  h4 {
+    margin: 0 0 1rem 0;
+    text-align: center;
+  }
+
   .buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.25rem;
   }
 
   .count {
@@ -37,17 +42,17 @@
   }
 
   .count:hover {
-    background-color: #f1f1f1;
-  }
-
-  .reset{
-    font-size: 1rem;
-    margin: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    border: solid 1px #242424;
     background-color: white;
   }
+
+.reset{
+  font-size: .75rem;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: solid 1px #242424;
+  background-color: white;
+}
 
   .reset:hover {
     background-color: #242424;
@@ -57,10 +62,10 @@
 
   button {
     text-align: center;
-    background-color: #f1f1f1;
+    background-color: white;
     border: none;
-    padding: 1rem 1.25rem;
-    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
   }

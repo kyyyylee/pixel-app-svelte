@@ -1,5 +1,6 @@
 <script>
   import { selectedColor, fillGrid, crochet } from "./store.js";
+  import Counter from "./Counter.svelte";
 
   const colors = [
     "red",
@@ -100,9 +101,13 @@
       <button disabled={$crochet} on:click={fillMode} style="border: {fill ? '3px solid black' : 'none' };"><i class="fa-solid fa-fill-drip"></i></button>
       <button disabled={$crochet} on:click={() => selectColor()} on:click={eraseMode} style="border: {!erase ? 'none' : '3px solid black'};"><i class="fa-solid fa-eraser"></i></button>
   </div>
+<p>{message}</p>
 
+  <!--counter-->
+  <div class="counter">
+    <Counter />
+  </div>
   
- 
 </div>
 
 <style>
@@ -118,6 +123,7 @@
     margin: 0;
     padding: 0;
     font-size: small;
+    max-width: 250px;
   }
 
   .colorGrid {
@@ -162,7 +168,7 @@
     align-items: center;
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 800px) {
     .colorPill {
     width: 2.5rem;
     height: 2.5rem;

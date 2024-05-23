@@ -1,6 +1,5 @@
 <script>
   import { selectedColor, fillGrid, crochet, selectedRow } from "./store.js";
-  import Counter from "./Counter.svelte";
 
   let size = 5;
   let range = Array(size)
@@ -75,7 +74,7 @@
   </div>
   <div class="gridInput">
     <label for="size">Grid size:</label>
-    <input type="number" bind:value={size} min="1" max="15" />
+    <input type="number" bind:value={size} min="1" max="30" />
   </div>
   <div class="grid" style="--size: {size};">
     {#each range as row, rowIndex}
@@ -132,14 +131,15 @@
     display: grid;
     grid-template-columns: repeat(var(--size), 1fr);
     border: 1px solid #242424;
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
   }
 
   .cell {
-    border: 1px solid #242424;
-    padding: 10px;
-  }
+  border: 1px solid #242424;
+  padding: 0; /* Remove padding */
+  box-sizing: border-box; /* Add this to include the border in the cell's dimensions */
+}
 
   button {
     margin: 1rem;
@@ -155,17 +155,12 @@
     cursor: pointer;
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 800px) {
     .grid {
-      width: 450px;
-      height: 450px;
+      width: 600px;
+      height: 600px;
     }
   }
 
-  @media (min-width: 1200px) {
-    .grid {
-      width: 500px;
-      height: 500px;
-    }
-  }
+
 </style>

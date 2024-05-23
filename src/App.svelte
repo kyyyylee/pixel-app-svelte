@@ -26,11 +26,6 @@
   <div class="grid">
     <Grid />
   </div>
-
-  <!--counter-->
-  <div class="counter">
-    <Counter />
-  </div>
 </main>
 
 <!--footer-->
@@ -75,13 +70,12 @@
   main {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 2rem;
   }
 
   .panel {
     background-color: #f1f2f5;
-    padding: 1rem 4rem;
+    padding: 1rem 2rem;
     border-radius: 10px;
     margin: 0.5rem 1rem;
   }
@@ -133,7 +127,7 @@
     color: #f1f2f5;
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 800px) {
     main {
       flex-direction: row;
     }
@@ -143,13 +137,8 @@
       place-items: center;
     }
     .grid {
-      margin-top: 1rem;
-    }
-    .counter {
-      background-color: #f1f2f5;
-      padding: 1rem 4rem;
-      border-radius: 10px;
-      margin: 0.5rem 1rem;
+      width: 100%;
+      margin-top: 2rem;
     }
     footer {
       width: 80%;
