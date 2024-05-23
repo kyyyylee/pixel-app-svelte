@@ -14,7 +14,7 @@
 </script>
 
 <header>
-  <h1>Stitched Pixels</h1>
+  <h1>Stitched Pixler</h1>
 </header>
 <main>
   <!--tools panel-->
